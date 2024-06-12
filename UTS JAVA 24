@@ -1,0 +1,67 @@
+import java.util.Scanner;
+
+public class GelombangMekanik {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int pilihan;
+
+        do {
+            System.out.println("Program Perhitungan Gelombang");
+            System.out.println("1. Hitung Cepat Rambat Gelombang Mekanik");
+            System.out.println("2. Hitung Periode Gelombang");
+            System.out.println("0. Keluar");
+            System.out.print("Masukkan pilihan: ");
+            pilihan = scanner.nextInt();
+
+            switch (pilihan) {
+                case 1:
+                    hitungCepatRambat();
+                    break;
+                case 2:
+                    hitungPeriodeGelombang();
+                    break;
+                case 0:
+                    System.out.println("Keluar dari program.");
+                    break;
+                default:
+                    System.out.println("Pilihan tidak valid!");
+                    break;
+            }
+        } while (pilihan != 0);
+    }
+
+    public static void hitungCepatRambat() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Masukkan panjang medium (meter): ");
+        double panjangMedium = scanner.nextDouble();
+
+        System.out.print("Masukkan jumlah gelombang: ");
+        int jumlahGelombang = scanner.nextInt();
+
+        System.out.println("\nHasil perhitungan gelombang:");
+
+        for (int i = 1; i <= jumlahGelombang; i++) {
+            double panjangGelombang = panjangMedium / i;
+            double kecepatanGelombang = Math.sqrt(panjangGelombang * 9.8); // Rumus kecepatan gelombang pada gelombang mekanik
+            System.out.println("Gelombang ke-" + i + ": Panjang gelombang = " + panjangGelombang + " meter, Kecepatan gelombang = " + kecepatanGelombang + " m/s");
+        }
+    }
+
+    public static void hitungPeriodeGelombang() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Masukkan total waktu gelombang (detik): ");
+        double totalWaktu = scanner.nextDouble();
+
+        System.out.print("Masukkan jumlah gelombang: ");
+        int jumlahGelombang = scanner.nextInt();
+
+        System.out.println("\nHasil perhitungan periode gelombang:");
+
+        for (int i = 1; i <= jumlahGelombang; i++) {
+            double periodeGelombang = totalWaktu / i; // Menghitung periode gelombang
+            System.out.println("Gelombang ke-" + i + ": Periode gelombang = " + periodeGelombang + " detik");
+        }
+    }
+}
